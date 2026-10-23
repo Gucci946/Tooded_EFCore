@@ -36,6 +36,23 @@ namespace Tooded_EFCore.Migrations.Tooded
                     b.HasKey("Id");
 
                     b.ToTable("Kategooriatabel", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            KategooriaNimetus = "Joogid"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            KategooriaNimetus = "Puu- ja köögiviljad"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            KategooriaNimetus = "Maiustused"
+                        });
                 });
 
             modelBuilder.Entity("Tooded_EFCore.Toode", b =>

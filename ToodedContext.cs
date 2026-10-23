@@ -21,6 +21,24 @@ namespace Tooded_EFCore
 
             modelBuilder.Entity<Toode>()
                 .ToTable("Toodetabel");
+
+            modelBuilder.Entity<Kategooria>().HasData(
+                new Kategooria
+                {
+                    Id = 1,
+                    KategooriaNimetus = "Joogid"
+                },
+                new Kategooria
+                {
+                    Id = 2,
+                    KategooriaNimetus = "Puu- ja köögiviljad"
+                },
+                new Kategooria
+                {
+                    Id = 3,
+                    KategooriaNimetus = "Maiustused"
+                }
+            );
         }
     }
 }
