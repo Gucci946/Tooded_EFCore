@@ -1,28 +1,25 @@
 ﻿
-using System;
-using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 
-namespace Tooded_EFCore
+namespace Tooded_EFCore;
+
+internal static class Program
 {
-    internal static class Program
+    [STAThread]
+    static void Main()
     {
-        [STAThread]
-        static void Main()
+        ApplicationConfiguration.Initialize();
+
+        // Создаём папки для фотографий и PDF-счетов.
+        Kaustad.Loo();
+
+        // Применяем миграции базы данных.
+        using (var db = new ToodedContext())
         {
-            ApplicationConfiguration.Initialize();
-
-            // Создаём папки для фотографий и счетов
-            Kaustad.Loo();
-
-            // Проверяем и применяем миграции базы данных
-            using (var db = new ToodedContext())
-            {
-                db.Database.Migrate();
-            }
-
-            // Открываем форму управления товарами
-            Application.Run(new Form2());
+            db.Database.Migrate();
         }
+
+        // Открываем главное меню.
+        Application.Run(new FormMain());
     }
 }
